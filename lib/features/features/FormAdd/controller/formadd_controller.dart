@@ -18,7 +18,7 @@ class FormAddController extends GetxController{
 
   @override
   void onInit(){
-   getAddValues();
+   // getAddValues();
    setAddValues();
    // removeAddValues();
    super.onInit();

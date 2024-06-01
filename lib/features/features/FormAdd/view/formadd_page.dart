@@ -45,7 +45,7 @@ class FormAddPage extends GetView<FormAddController>{
                     onPressed: (){
                       controller.getAddValues();
                       // Get.back();
-                    }, child: const Text("Cancel")),
+                    }, child: const Text("Show")),
                 ElevatedButton(
                     onPressed: (){
                       controller.removeAddValues();

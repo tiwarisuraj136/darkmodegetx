@@ -12,6 +12,14 @@ class LoginPage extends GetView<LoginPageController>{
       appBar: AppBar(
         title: const Text("Login Page"),
         backgroundColor: Colors.teal,
+        actions: [
+          Obx(
+                () => Switch(
+              value: controller.isLightTheme.value,
+              onChanged: controller.toggleTheme,
+            ),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Column(

@@ -1,28 +1,17 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:darkmodegetx/core/core/globals.dart' as globals;
 
 class HomePageController extends GetxController{
 
-  RxBool isLightTheme = false.obs;
+@override
+  Future<void> onInit() async{
+  var prefs = await SharedPreferences.getInstance();
+  globals.newNameValue.value = await prefs.getString("name")??'no name';
+  globals.newSchoolValue.value = await prefs.getString("school")??'no school';
+  globals.newCityValue.value = await prefs.getString("city")??'no city';
+  super.onInit();
 
-  @override
-  void onInit() {
-    super.onInit();
-    getThemeStatus();
-  }
-  Future<void> getThemeStatus() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    isLightTheme.value = prefs.getBool('theme') ?? true;
-    Get.changeThemeMode(isLightTheme.value ? ThemeMode.light : ThemeMode.dark);
-  }
-  void toggleTheme(bool value) {
-    isLightTheme.value = value;
-    Get.changeThemeMode(isLightTheme.value ? ThemeMode.light : ThemeMode.dark);
-    saveThemeStatus();
-  }
-  Future<void> saveThemeStatus() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('theme', isLightTheme.value);
-  }
+
+}
 }

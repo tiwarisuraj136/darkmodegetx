@@ -1,3 +1,4 @@
+import 'package:darkmodegetx/core/core/globals.dart' as globals;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,16 +6,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class FormAddController extends GetxController{
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-   TextEditingController name=TextEditingController();
-   TextEditingController school =TextEditingController();
-   TextEditingController city =TextEditingController();
-   RxString names = 'name not found'.obs;
-   RxString schools = 'school not found'.obs;
-   RxString citys = 'city not found'.obs;
+   TextEditingController name = TextEditingController();
+   TextEditingController school = TextEditingController();
+   TextEditingController city = TextEditingController();
+   RxString names = ''.obs;
+   RxString schools = ''.obs;
+   RxString citys = ''.obs;
 
-   RxString newNameValue= ''.obs;
-   RxString newSchoolValue= ''.obs;
-   RxString newCityValue= ''.obs;
+   // RxString newNameValue= ''.obs;
+   // RxString newSchoolValue= ''.obs;
+   // RxString newCityValue= ''.obs;
 
   @override
   void onInit(){
@@ -29,7 +30,7 @@ class FormAddController extends GetxController{
     schools.value =school.text;
     citys.value =city.text;
     var prefs =  await SharedPreferences.getInstance();
-    await prefs.setString('name', names.value);
+    prefs.setString('name', names.value);
     await prefs.setString('school', schools.value);
     await prefs.setString('city', citys.value);
   }
@@ -37,25 +38,22 @@ class FormAddController extends GetxController{
   Future<void> getAddValues() async {
 
     var prefs = await SharedPreferences.getInstance();
-    var getName =prefs.getString("name");
+
+     var getName = prefs.getString("name");
     var getSchool = prefs.getString("school");
     var getCity = prefs.getString("city");
 
-    newNameValue.value = getName ?? 'Default Name';
-    newSchoolValue.value = getSchool ?? 'Default School';
-    newCityValue.value = getCity ?? 'Default City';
+    globals.newNameValue.value = getName ?? 'No Name Found';
+    globals.newSchoolValue.value = getSchool ?? 'No School Found';
+    globals.newCityValue.value = getCity ?? 'No City Found';
 
-
-    // newNameValue.value =getName!;
-    // newSchoolValue.value=getSchool!;
-    // newCityValue.value=getCity!;
     Get.defaultDialog(
         title: 'Stored Values',
         content: Column(
           children: [
-            Text(newNameValue.value),
-            Text(newSchoolValue.value),
-            Text(newCityValue.value),
+            Text(globals.newNameValue.value),
+            Text(globals.newSchoolValue.value),
+            Text(globals.newCityValue.value),
           ],
         )
     );

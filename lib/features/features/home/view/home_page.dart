@@ -16,7 +16,6 @@ class HomePage extends GetView<HomePageController>{
        children: [
          Text(globals.newNameValue.value),
          Text(globals.newSchoolValue.value),
-         const Text('Suraj Tiwari'),
          Text(globals.newCityValue.value),
          const SizedBox(height: 10,),
          ElevatedButton(onPressed: (){

@@ -11,7 +11,7 @@ void main() {
 class MyApp extends StatelessWidget {
    MyApp({super.key});
 
-  final ThemeData _darkTheme = ThemeData(
+  final ThemeData darkThemeApp = ThemeData(
     hintColor: Colors.red,
     brightness: Brightness.dark,
     primaryColor: Colors.amber,
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     ),
   );
 
-  final ThemeData _lightTheme = ThemeData(
+  final ThemeData lightThemeApp = ThemeData(
     hintColor: Colors.pink,
     brightness: Brightness.light,
     primaryColor: Colors.blue,
@@ -37,8 +37,8 @@ class MyApp extends StatelessWidget {
     WidgetsFlutterBinding.ensureInitialized();
     return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: _lightTheme,
-      darkTheme: _darkTheme,
+      theme: lightThemeApp,
+      darkTheme: darkThemeApp,
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
 

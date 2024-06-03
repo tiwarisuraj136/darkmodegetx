@@ -4,6 +4,7 @@ import 'package:darkmodegetx/core/core/globals.dart' as globals;
 
 class HomePageController extends GetxController{
 
+
 @override
   Future<void> onInit() async{
   var prefs = await SharedPreferences.getInstance();
@@ -12,6 +13,7 @@ class HomePageController extends GetxController{
   globals.newCityValue.value = await prefs.getString("city")??'no city';
   super.onInit();
 
-
 }
+
+
 }

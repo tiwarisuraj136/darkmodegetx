@@ -14,20 +14,31 @@ class LoginPageController extends GetxController{
   void onInit() {
     super.onInit();
     getThemeStatus();
+    print('isLightThemeline16');
+    print(isLightTheme);
+    print('isLightTheme line 18');
   }
   Future<void> getThemeStatus() async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
     var prefs = await SharedPreferences.getInstance();
     isLightTheme.value = prefs.getBool('theme') ?? true;
     Get.changeThemeMode(isLightTheme.value ? ThemeMode.light : ThemeMode.dark);
+    print('isLightThemeline25');
+    print(isLightTheme);
+    print('isLightTheme line 27');
   }
   void toggleTheme(bool value) {
     isLightTheme.value = value;
     Get.changeThemeMode(isLightTheme.value ? ThemeMode.light : ThemeMode.dark);
-    saveThemeStatus();
+
+
+    print('isLightThemeline29');
+    print(isLightTheme);
+    print('isLightTheme line 31');
+
+
+     saveThemeStatus();
   }
   Future<void> saveThemeStatus() async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
     var prefs = await SharedPreferences.getInstance();
     prefs.setBool('theme', isLightTheme.value);
   }
